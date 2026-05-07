@@ -1,0 +1,28 @@
+query GetContacts {
+	uiapi {
+		query {
+			Contact(first: 10, orderBy: { CreatedDate: { order: ASC } }) {
+				edges {
+					node {
+						Id
+						Name @optional { value displayValue }
+						Title @optional { value displayValue }
+						Email @optional { value displayValue }
+						Phone @optional { value displayValue }
+						Account @optional {
+							Id
+							Name @optional { value displayValue }
+							Industry @optional { value displayValue }
+							Type @optional { value displayValue }
+						}
+						Owner @optional {
+							Id
+							Name @optional { value displayValue }
+						}
+					}
+				}
+				totalCount
+			}
+		}
+	}
+}
